@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f4f1ea;
+  --foreground: #1c1915;
+  --card: #fffcf8;
+  --card-foreground: #1c1915;
+  --primary: #8a4b12;
+  --primary-foreground: #fff8ef;
+  --secondary: #ebe4d8;
+  --secondary-foreground: #1c1915;
+  --muted: #ebe4d8;
+  --muted-foreground: #5c564c;
+  --accent: #e7f0ea;
+  --accent-foreground: #1c1915;
+  --border: #ddd4c6;
+  --ring: #8a4b12;
+  --destructive: #9f2d22;
+  --radius: 0.85rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #0e1116;
+  --foreground: #f3efe6;
+  --card: #171c24;
+  --card-foreground: #f3efe6;
+  --primary: #e8a15a;
+  --primary-foreground: #1a1208;
+  --secondary: #242b36;
+  --secondary-foreground: #f3efe6;
+  --muted: #242b36;
+  --muted-foreground: #c4beb3;
+  --accent: #243044;
+  --accent-foreground: #f3efe6;
+  --border: #313846;
+  --ring: #e8a15a;
+  --destructive: #f07167;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.6s ease both;
+}
+
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
